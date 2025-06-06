@@ -134,8 +134,98 @@
         flex: 1 1 45%;
       }
     }
+    .slideshow-container {
+  position: relative;
+  max-width: 600px;
+  margin: auto;
+}
+
+.slide {
+  display: none;
+}
+
+img {
+  vertical-align: middle;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  width: auto;
+  padding: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.3s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.dot {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: 0 3px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+.fade {
+  animation: fade 1s ease-in-out;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
   </style>
 </head>
+<script>
+let slideIndex = 0;
+autoShowSlides();
+
+function autoShowSlides() {
+  const slides = document.getElementsByClassName("slide");
+  const dots = document.getElementsByClassName("dot");
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  slideIndex++;
+  if (slideIndex > slides.length) { slideIndex = 1 }
+
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+
+  setTimeout(autoShowSlides, 3000); // Change slide every 3 seconds
+}
+</script>
+
 <body>
   <header>
     Welcome to Perodua Sales - Premium Experience
@@ -148,13 +238,32 @@
     <a href="#about">About Us</a>
   </nav>
 
-  <!-- Sections below... (not repeating full HTML for brevity) -->
-  <section id="promotions">
-    <h2>Exclusive Promotions</h2>
-    <img src="pro.jpg" alt="Promotion Banner" style="width:100%; max-width:600px; border-radius: 12px;"/>
-    <p>Get the best financing options & limited-time offers!</p>
-    <a href="https://wapp.my/60123738541/zaperiperodua" target="_blank" class="cta-button">Claim Offer on WhatApps</a>
-  </section>
+ <section id="promotions">
+  <h2>Exclusive Promotions</h2>
+
+  <div class="slideshow-container">
+    <div class="slide fade">
+      <img src="pro.jpg" alt="Promotion 1" style="width:100%; border-radius: 12px;">
+    </div>
+    <div class="slide fade">
+      <img src="pro2.jpg" alt="Promotion 2" style="width:100%; border-radius: 12px;">
+    </div>
+    <div class="slide fade">
+      <img src="pro3.jpg" alt="Promotion 3" style="width:100%; border-radius: 12px;">
+    </div>
+  </div>
+
+  <br/>
+  <div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+  <p>Get the best financing options & limited-time offers!</p>
+  <a href="https://wapp.my/60123738541/zaperiperodua" target="_blank" class="cta-button">Claim Offer on WhatsApp</a>
+</section>
+
 
 <!-- CAR MODEL SECTION -->
 <section id="cars">

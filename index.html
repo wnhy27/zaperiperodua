@@ -237,33 +237,59 @@ function autoShowSlides() {
     <a href="#feedback">Customer Feedback</a>
     <a href="#about">About Us</a>
   </nav>
-
+  
+<!-- PROMOTION SECTION -->
  <section id="promotions">
-  <h2>Exclusive Promotions</h2>
-
-  <div class="slideshow-container">
-    <div class="slide fade">
-      <img src="pro.jpg" alt="Promotion 1" style="width:100%; border-radius: 12px;">
-    </div>
-    <div class="slide fade">
-      <img src="pro2.jpg" alt="Promotion 2" style="width:100%; border-radius: 12px;">
-    </div>
-    <div class="slide fade">
-      <img src="pro3.jpg" alt="Promotion 3" style="width:100%; border-radius: 12px;">
+  <div class="slider-container">
+    <div class="slides">
+      <img class="slide" src="pro.jpg" alt="Promotion 1">
+      <img class="slide" src="pro2.jpg" alt="Promotion 2">
+      <img class="slide" src="pro3.jpg" alt="Promotion 3">
     </div>
   </div>
-
-  <br/>
-  <div style="text-align:center">
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
+  <div class="dots">
+    <span class="dot" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
   </div>
-
-  <p>Get the best financing options & limited-time offers!</p>
-  <a href="https://wapp.my/60123738541/zaperiperodua" target="_blank" class="cta-button">Claim Offer on WhatsApp</a>
+  <div class="promo-content">
+    <h2>Exclusive Promotions</h2>
+    <p>Get the best financing options & limited-time offers!</p>
+    <a href="https://wa.me/60123456789" class="cta-button">Claim Offer on WhatsApp</a>
+  </div>
 </section>
 
+<!-- PROMOTION SLIDE SECTION -->
+<script>
+  let slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    const slides = document.getElementsByClassName("slide");
+    const dots = document.getElementsByClassName("dot");
+
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].classList.remove("active");
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].classList.add("active");
+
+    setTimeout(showSlides, 3000); // Change slide every 3 seconds
+  }
+
+  function currentSlide(n) {
+    slideIndex = n;
+    showSlides();
+  }
+</script>
 
 <!-- CAR MODEL SECTION -->
 <section id="cars">

@@ -135,18 +135,21 @@
     }
     .slideshow-container {
   position: relative;
-  max-width: 600px;
-  margin: auto;
-}
-
-.slide {
-  display: none;
-}
-
-img {
-  vertical-align: middle;
   width: 100%;
+  max-width: 900px;      /* Standard desktop width */
+  margin: 25px auto;
+  overflow: hidden;
   border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.slide img {
+  width: 100%;
+  height: auto;          /* Keep natural aspect ratio */
+  display: block;
+  border-radius: 12px;
+  object-fit: contain;   /* show full image (no crop/stretch) */
+  background-color: #000; /* fill sides with black if ratio differs */
 }
 
 .prev, .next {
